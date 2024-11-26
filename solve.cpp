@@ -6,8 +6,11 @@ using namespace std;
 void program(){
     int n, q1, q2;
     cin >> n >> q1 >> q2;
-    vector <int> chan (n, 0);
-    vector <int> le (n, 0);
+    int chan[n], le[n];
+    for (int i = 0; i <= n; i++){
+        chan[i] = 0;
+        le[i] = 0;
+    }
     for (int i = 1; i <= q1; i++){
         int a, l, r, x;
         cin >> a >> l >> r >> x;
@@ -20,7 +23,7 @@ void program(){
             le[l] += x;
             le[r + 1] -= x;
         }
-        if (a == 1){
+        else if (a == 1){
             if (l == r && r%2) continue;
             if (l%2) l++;
             if (r%2) r--;
@@ -30,21 +33,23 @@ void program(){
             chan[r + 1] -= x;
         }
     }
-    // cout << 'c';
+
+    for (int i = 0; i <= n; i++) cout << chan[i] << ' ';
+    cout << endl;
+    for (int i = 0; i <= n; i++) cout << le[i] << ' ';
+    cout << endl;
+
     int sum = 0;
     vector <int> day1, day2, daytong;
     for (int i = 0; i <= n/2; i++){
         sum += chan[i];
         day2.push_back(sum);
-        // cout << sum << ' ';
     }
-    // cout << endl;
 
     sum = 0;
     for (int i = 0; i <= n/2 + n%2; i++){
         sum += le[i];
         day1.push_back(sum);
-        // cout << sum << ' ';
     }
 
     for (int i = 1; i <= n; i++){
@@ -52,7 +57,7 @@ void program(){
         if (i%2) daytong.push_back(day1[idx]);
         else daytong.push_back(day2[idx]);
     }
-    // for (int i = 0; i < daytong.size(); i++) cout << daytong[i] << ' ';
+    
     int tong[n + 1];
     tong[0] = 0;
     for (int i = 1; i <= n; i++) tong[i] = tong[i - 1] + daytong[i - 1];
@@ -61,10 +66,11 @@ void program(){
         cin >> l >> r;
         cout << tong[r] - tong[l - 1] << endl;
     }
+    
 }
 
 signed main(){
-    for (int test = 1; test <= 2; test++) {
+    for (int test = 5; test <= 5; test++) {
         string inp = to_string(test) + ".inp";
         string out = to_string(test) + ".out";
         freopen(inp.c_str(), "r", stdin);
