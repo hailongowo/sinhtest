@@ -5,23 +5,17 @@
 
 using namespace std;
 
-const int mod = 1e5;
-const int maxn = 1e5;
+const int mod = 1e9;
+const int maxn = 1e6;
 mt19937 rng(time(nullptr));
 
 void program(){
-    int n = rand()%maxn + 1, q = rand()%n;
-
-    cout << n << ' ' << q << endl;
+    int n = rand()%maxn + 2, k = rng()%1000;
+    cout << k << ' ' << n <<endl;
     for (int i = 1; i <= n; i++){
-        cout << rand()%3 + 1 << ' ';
+        cout << rng()%mod + 1 << ' ';
     }
     cout << endl;
-    for (int i = 1; i <= q; i++){
-        int l = rand()%n + 1, r = rand()%n + 1;
-        if (l > r) swap(l, r);
-        cout << l << ' ' << r << endl;
-    }
 }
 signed main(){
     srand(time(0));

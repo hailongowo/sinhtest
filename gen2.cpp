@@ -10,20 +10,12 @@ const int maxn = 1e6;
 mt19937 rng(time(nullptr));
 
 void program(){
-    int n = rand()%5 + 1, q1 = rand()%5 + 1, q2 = rand()%5 + 1;
-
-    cout << n << ' ' << q1 << ' ' << q2 << endl;
-    for (int i = 1; i <= q1; i++){
-        cout << rand()%2 + 1 << ' ';
-        int l = rand()%n + 1, r = rand()%n + 1;
-        if (l > r) swap(l, r);
-        cout << l << ' ' << r << ' ' << rand()%10 + 1 << endl;
+    int n = rand()%20 + 2, k = rand()%30;
+    cout << k << ' ' << n <<endl;
+    for (int i = 1; i <= n; i++){
+        cout << rand()%50 + 1 << ' ';
     }
-    for (int i = 1; i <= q2; i++){
-        int l = rand()%n + 1, r = rand()%n + 1;
-        if (l > r) swap(l, r);
-        cout << l << ' ' << r << endl;
-    }
+    cout << endl;
 }
 signed main(){
     srand(time(0));
